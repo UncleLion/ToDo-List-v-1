@@ -22,7 +22,7 @@ function Todo( {todos, completeTodo, removeTodo, updateTodo, raw,} ) {
         return <TodoForm edit={edit} onSubmit={submitUpdate} />;
     }
 
-  return todos.map((todo, index) => (
+  return todos.map((todo, index) => {
     <div 
         className={todo.isComplete ? 'todo-row complete':'todo-row'} 
         key={index}
@@ -42,7 +42,7 @@ function Todo( {todos, completeTodo, removeTodo, updateTodo, raw,} ) {
             />
         </div>
     </div>
-  ))
+    })
 };
 
 export default Todo
