@@ -4,15 +4,15 @@ import Todo from './Todo';
 
 function TodoList() {
     const [todos, setTodos] = useState(() => {
-        return JSON.parse(localStorage.getItem('todos') || '{}')
+        return JSON.parse(localStorage.getItem('todos') || '')
     });
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
-    }, [todos])
+    }, [todos]);
 
     const addTodo = todo => {
-        if(!todo.text || /^\s*$/.test(todo.text)) {
+        if (!todo.text || /^\s*$/.test(todo.text)) {
             return;
         }
 
@@ -22,17 +22,16 @@ function TodoList() {
     };
 
     const updateTodo = (todoId, newValue) => {
-        if(!newValue.text || /^\s*$/.test(newValue.text)) {
+        if (!newValue.text || /^\s*$/.test(newValue.text)) {
             return;
         }
 
-        setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)))
-    }
+        setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
+    };
 
-
-    // Видаляє 
     const removeTodo = id => {
-        const removeArr = [...todos].filter(todo => todo.id !== id)
+        const removeArr = [...todos].filter(todo => todo.id !== id);
+
         setTodos(removeArr);
     };
 
@@ -51,13 +50,13 @@ function TodoList() {
         <h1>Welcome!</h1>
         <TodoForm onSubmit={addTodo}/>
         <Todo 
-        todos={todos} 
-        completeTodo={completeTodo} 
-        removeTodo={removeTodo}
-        updateTodo={updateTodo}
+            todos={todos} 
+            completeTodo={completeTodo} 
+            removeTodo={removeTodo}
+            updateTodo={updateTodo}
         />
     </div>
-  )
+  );
 }
 
-export default TodoList
+export default TodoList;

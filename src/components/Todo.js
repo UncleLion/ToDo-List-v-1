@@ -15,10 +15,10 @@ function Todo( {todos, completeTodo, removeTodo, updateTodo, raw,} ) {
         setEdit({
             id: null,
             value: ''
-        })
-    }
+        });
+    };
     
-    if(edit.id) {
+    if (edit.id) {
         return <TodoForm edit={edit} onSubmit={submitUpdate} />;
     }
 
